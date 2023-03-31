@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-container fluid>
+      <b-row>
+        <b-col>
+          <div>
+            <b-card title="3rd Party Instruction">
+              <b-row>
+                <b-col>
+                  <ComponentA style="margin-top: 75px"/>
+                </b-col>
+              </b-row>
+            </b-card>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <!-- <ComponentB /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import ComponentB from './components/ComponentB.vue'
+import ComponentA from './components/ComponentA.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // ComponentB
+    ComponentA
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: sans-serif;
+  padding-top: 2rem;
 }
 </style>
