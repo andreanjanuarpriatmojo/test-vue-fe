@@ -8,6 +8,7 @@
               <b-row>
                 <b-col>
                   <ComponentA style="margin-top: 75px"/>
+                  <ComponentB />
                 </b-col>
               </b-row>
             </b-card>
@@ -15,19 +16,18 @@
         </b-col>
       </b-row>
     </b-container>
-    <!-- <ComponentB /> -->
   </div>
 </template>
 
 <script>
-// import ComponentB from './components/ComponentB.vue'
 import ComponentA from './components/ComponentA.vue'
+import ComponentB from './components/ComponentB.vue'
 
 export default {
   name: 'App',
   components: {
-    // ComponentB
-    ComponentA
+    ComponentA,
+    ComponentB
   }
 }
 </script>
