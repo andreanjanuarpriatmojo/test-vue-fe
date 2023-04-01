@@ -43,7 +43,7 @@ export default new Vuex.Store({
     fetchVendor ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/instruction/vendor')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setVendor', data.data)
         })
         .catch(console.log)
@@ -51,7 +51,7 @@ export default new Vuex.Store({
     fetchInvoice ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/instruction/invoice')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setInvoice', data.data)
         })
         .catch(console.log)
@@ -59,7 +59,7 @@ export default new Vuex.Store({
     fetchCustomer ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/instruction/customer')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setCustomer', data.data)
         })
         .catch(console.log)
@@ -67,7 +67,7 @@ export default new Vuex.Store({
     fetchPo ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/instruction/po')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setPo', data.data)
         })
         .catch(console.log)
@@ -75,7 +75,7 @@ export default new Vuex.Store({
     fetchUom ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/cost/uom')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setUom', data.data)
         })
         .catch(console.log)
@@ -83,7 +83,7 @@ export default new Vuex.Store({
     fetchCurrency ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/cost/currency')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setCurrency', data.data)
         })
         .catch(console.log)
@@ -91,7 +91,7 @@ export default new Vuex.Store({
     fetchChargeTo ({ commit }) {
       axios.get('http://127.0.0.1:8000/api/cost/chargeto')
         .then(({ data }) => {
-          console.log(data)
+          // console.log(data)
           commit('setChargeTo', data.data)
         })
         .catch(console.log)

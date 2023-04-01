@@ -48,7 +48,7 @@
                                 <p class="text-center">{{ (row.item.qty * row.item.unit_price) - ((row.item.qty * row.item.unit_price) * (row.item.discount) / 100) }}</p>
                             </template>
                             <template #cell(total)="row">
-                                <p class="text-center">{{ (row.item.vat_amount + row.item.sub_total) }}</p>
+                                <p class="text-center">{{ ((row.item.qty * row.item.unit_price) * (row.item.vat) / 100) + (row.item.qty * row.item.unit_price) - ((row.item.qty * row.item.unit_price) * (row.item.discount) / 100) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
                                 <b-form-select v-model="row.item.charge_to" :options="chargeToOptions" required></b-form-select>
@@ -92,6 +92,7 @@
                                 </b-tr>
                             </template>
                         </b-table>
+                        <b-button @click="printAll">Test</b-button>
                     </b-col>
                 </b-row>
             </b-card-body>
@@ -115,8 +116,8 @@ export default {
         { key: 'currency', label: 'Currency' },
         { key: 'vat_amount', label: 'VAT Amount', thClass: 'text-center' },
         { key: 'sub_total', label: 'Sub Total', thClass: 'text-center' },
-        { key: 'total', label: 'Total', thClass: 'text-center' },
-        { key: 'charge_to', label: 'Charge To', thStyle: { width: '15%' } },
+        { key: 'total', label: 'Total', thClass: 'text-center', thStyle: { width: '7%' } },
+        { key: 'charge_to', label: 'Charge To', thStyle: { width: '10%' } },
         { key: 'index', label: '' }
       ],
       items: [
@@ -168,6 +169,9 @@ export default {
     },
     fetchChargeTo () {
       this.$store.dispatch('fetchChargeTo')
+    },
+    printAll () {
+      console.log(this.items)
     }
   },
   created () {
