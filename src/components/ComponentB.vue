@@ -42,13 +42,13 @@
                                 <b-form-select v-model="row.item.currency" :options="currencyOptions" required></b-form-select>
                             </template>
                             <template #cell(vat_amount)="row">
-                                <p class="text-center">{{ (row.item.qty * row.item.unit_price) * (row.item.vat) / 100 }}</p>
+                                <p class="text-center">{{ vatAmountFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(sub_total)="row">
-                                <p class="text-center">{{ (row.item.qty * row.item.unit_price) - ((row.item.qty * row.item.unit_price) * (row.item.discount) / 100) }}</p>
+                                <p class="text-center">{{ subTotalFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(total)="row">
-                                <p class="text-center">{{ ((row.item.qty * row.item.unit_price) * (row.item.vat) / 100) + (row.item.qty * row.item.unit_price) - ((row.item.qty * row.item.unit_price) * (row.item.discount) / 100) }}</p>
+                                <p class="text-center">{{ totalFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
                                 <b-form-select v-model="row.item.charge_to" :options="chargeToOptions" required></b-form-select>
@@ -72,16 +72,16 @@
                                         <p class="text-center">USD in Total</p>
                                     </b-td>
                                     <b-td style="font-weight: bold;background-color: #F5F6F8">
-                                        <p class="text-center">{{ '0.00' }}</p>
-                                        <p class="text-center">{{ '0.00' }}</p>
+                                        <p class="text-center">{{ allVatAmountFixAed }}</p>
+                                        <p class="text-center">{{ allVatAmountFixUsd }}</p>
                                     </b-td>
                                     <b-td style="font-weight: bold;background-color: #F5F6F8">
-                                        <p class="text-center">{{ '0.00' }}</p>
-                                        <p class="text-center">{{ '0.00' }}</p>
+                                        <p class="text-center">{{ allSubTotalFixAed }}</p>
+                                        <p class="text-center">{{ allSubTotalFixUsd }}</p>
                                     </b-td>
                                     <b-td style="font-weight: bold;background-color: #F5F6F8">
-                                        <p class="text-center">{{ '0.00' }}</p>
-                                        <p class="text-center">{{ '0.00' }}</p>
+                                        <p class="text-center">{{ allTotalFixAed }}</p>
+                                        <p class="text-center">{{ allTotalFixUsd }}</p>
                                     </b-td>
                                     <b-td></b-td>
                                     <b-td>
@@ -92,7 +92,7 @@
                                 </b-tr>
                             </template>
                         </b-table>
-                        <b-button @click="printAll">Test</b-button>
+                        <!-- <b-button @click="printAll">Test</b-button> -->
                     </b-col>
                 </b-row>
             </b-card-body>
@@ -152,6 +152,42 @@ export default {
           text: item.name
         }
       })
+    },
+    allSubTotalFixUsd () {
+      return this.items
+        .map(item => this.subTotalFixUsd(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
+    },
+    allSubTotalFixAed () {
+      return this.items
+        .map(item => this.subTotalFixAed(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
+    },
+    allVatAmountFixUsd () {
+      return this.items
+        .map(item => this.vatAmountFixUsd(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
+    },
+    allVatAmountFixAed () {
+      return this.items
+        .map(item => this.vatAmountFixAed(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
+    },
+    allTotalFixUsd () {
+      return this.items
+        .map(item => this.totalFixUsd(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
+    },
+    allTotalFixAed () {
+      return this.items
+        .map(item => this.totalFixAed(item))
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2)
     }
   },
   methods: {
@@ -172,6 +208,33 @@ export default {
     },
     printAll () {
       console.log(this.items)
+    },
+    subTotalFix (item) {
+      return (item.qty * item.unit_price) - (item.qty * item.unit_price * item.discount / 100)
+    },
+    subTotalFixUsd (item) {
+      return item.currency ? item.currency === 1 ? this.subTotalFix(item) : this.subTotalFix(item) / this.currency : 0
+    },
+    subTotalFixAed (item) {
+      return item.currency ? item.currency === 2 ? this.subTotalFix(item) : this.subTotalFix(item) * this.currency : 0
+    },
+    vatAmountFix (item) {
+      return (item.qty * item.unit_price) * (item.vat) / 100
+    },
+    vatAmountFixUsd (item) {
+      return item.currency ? item.currency === 1 ? this.vatAmountFix(item) : this.vatAmountFix(item) / this.currency : 0
+    },
+    vatAmountFixAed (item) {
+      return item.currency ? item.currency === 2 ? this.vatAmountFix(item) : this.vatAmountFix(item) * this.currency : 0
+    },
+    totalFix (item) {
+      return (this.subTotalFix(item) + this.vatAmountFix(item))
+    },
+    totalFixUsd (item) {
+      return item.currency ? item.currency === 1 ? this.totalFix(item) : this.totalFix(item) / this.currency : 0
+    },
+    totalFixAed (item) {
+      return item.currency ? item.currency === 2 ? this.totalFix(item) : this.totalFix(item) * this.currency : 0
     }
   },
   created () {
