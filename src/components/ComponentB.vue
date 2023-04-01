@@ -53,16 +53,11 @@
                             <template #cell(charge_to)="row">
                                 <b-form-select v-model="row.item.charge_to" required></b-form-select>
                             </template>
-                            <template #cell(index)>
-                                <b-button title="Remove">
+                            <template #cell(index)="row">
+                                <b-button @click="removeCostDetail(row.index)" title="Remove">
                                     <b-icon icon="dash-lg" aria-hidden="true"></b-icon>
                                 </b-button>
                             </template>
-                            <!-- <template #foot(index)>
-                                <b-button title="Add" variant="success">
-                                    <b-icon icon="plus-lg" aria-hidden="true"></b-icon>
-                                </b-button>
-                            </template> -->
                             <template #custom-foot>
                                 <b-tr>
                                     <b-td colspan="7">
@@ -90,7 +85,7 @@
                                     </b-td>
                                     <b-td></b-td>
                                     <b-td>
-                                        <b-button title="Add" variant="success">
+                                        <b-button @click="addCostDetail" title="Add" variant="success">
                                             <b-icon icon="plus-lg" aria-hidden="true"></b-icon>
                                         </b-button>
                                     </b-td>
@@ -125,12 +120,19 @@ export default {
         { key: 'index', label: '' }
       ],
       items: [
-        { desc: null, qty: null, uom: null, unit_price: null, discount: 0, vat: 0, icon: null, currency: null, vat_amount: null, sub_total: null, total: null, charge_to: null, index: null },
         { desc: null, qty: null, uom: null, unit_price: null, discount: 0, vat: 0, icon: null, currency: null, vat_amount: null, sub_total: null, total: null, charge_to: null, index: null }
       ],
       headVariants: 'light',
       footVariants: 'none',
       currency: 3.6725
+    }
+  },
+  methods: {
+    addCostDetail () {
+      this.items.push({ desc: null, qty: null, uom: null, unit_price: null, discount: 0, vat: 0, icon: null, currency: null, vat_amount: null, sub_total: null, total: null, charge_to: null, index: null })
+    },
+    removeCostDetail: function (index) {
+      this.items.splice(index, 1)
     }
   }
 }
