@@ -41,14 +41,14 @@
                             <template #cell(currency)="row">
                                 <b-form-select v-model="row.item.currency" :options="currencyOptions" required></b-form-select>
                             </template>
-                            <template #cell(vat_amount)>
-                                <p class="text-center">{{ '0.00' }}</p>
+                            <template #cell(vat_amount)="row">
+                                <p class="text-center">{{ (row.item.qty * row.item.unit_price) * (row.item.vat) / 100 }}</p>
                             </template>
-                            <template #cell(sub_total)>
-                                <p class="text-center">{{ '0.00' }}</p>
+                            <template #cell(sub_total)="row">
+                                <p class="text-center">{{ (row.item.qty * row.item.unit_price) - ((row.item.qty * row.item.unit_price) * (row.item.discount) / 100) }}</p>
                             </template>
-                            <template #cell(total)>
-                                <p class="text-center">{{ '0.00' }}</p>
+                            <template #cell(total)="row">
+                                <p class="text-center">{{ (row.item.vat_amount + row.item.sub_total) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
                                 <b-form-select v-model="row.item.charge_to" :options="chargeToOptions" required></b-form-select>
