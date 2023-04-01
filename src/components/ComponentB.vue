@@ -24,7 +24,7 @@
                                 <b-form-input v-model="row.item.qty" type="number" placeholder="Qty" required></b-form-input>
                             </template>
                             <template #cell(uom)="row">
-                                <b-form-select v-model="row.item.uom" required></b-form-select>
+                                <b-form-select v-model="row.item.uom" :options="uomOptions" required></b-form-select>
                             </template>
                             <template #cell(unit_price)="row">
                                 <b-form-input v-model="row.item.unit_price" type="number" placeholder="Unit Price" required></b-form-input>
@@ -39,7 +39,7 @@
                                 <b-icon icon="arrow-right" aria-hidden="true"></b-icon>
                             </template>
                             <template #cell(currency)="row">
-                                <b-form-select v-model="row.item.currency" required></b-form-select>
+                                <b-form-select v-model="row.item.currency" :options="currencyOptions" required></b-form-select>
                             </template>
                             <template #cell(vat_amount)>
                                 <p class="text-center">{{ '0.00' }}</p>
@@ -51,7 +51,7 @@
                                 <p class="text-center">{{ '0.00' }}</p>
                             </template>
                             <template #cell(charge_to)="row">
-                                <b-form-select v-model="row.item.charge_to" required></b-form-select>
+                                <b-form-select v-model="row.item.charge_to" :options="chargeToOptions" required></b-form-select>
                             </template>
                             <template #cell(index)="row">
                                 <b-button @click="removeCostDetail(row.index)" title="Remove">
@@ -127,13 +127,53 @@ export default {
       currency: 3.6725
     }
   },
+  computed: {
+    uomOptions () {
+      return this.$store.state.uom.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    },
+    currencyOptions () {
+      return this.$store.state.currency.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    },
+    chargeToOptions () {
+      return this.$store.state.charge_to.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    }
+  },
   methods: {
     addCostDetail () {
       this.items.push({ desc: null, qty: null, uom: null, unit_price: null, discount: 0, vat: 0, icon: null, currency: null, vat_amount: null, sub_total: null, total: null, charge_to: null, index: null })
     },
     removeCostDetail: function (index) {
       this.items.splice(index, 1)
+    },
+    fetchUom () {
+      this.$store.dispatch('fetchUom')
+    },
+    fetchCurrency () {
+      this.$store.dispatch('fetchCurrency')
+    },
+    fetchChargeTo () {
+      this.$store.dispatch('fetchChargeTo')
     }
+  },
+  created () {
+    this.fetchUom()
+    this.fetchCurrency()
+    this.fetchChargeTo()
   }
 }
 </script>
