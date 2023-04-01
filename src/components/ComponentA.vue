@@ -20,7 +20,7 @@
                                 <b-row>
                                     <b-col cols="3">
                                         <b-form-group label="Assigned Vendor">
-                                            <b-form-select required></b-form-select>
+                                            <b-form-select v-model="vendor" :options="vendorOptions" required></b-form-select>
                                         </b-form-group>
                                     </b-col>
                                     <b-col cols="3">
@@ -35,7 +35,7 @@
                                     </b-col>
                                     <b-col cols="3">
                                         <b-form-group label="Invoice To">
-                                            <b-form-select required></b-form-select>
+                                            <b-form-select v-model="invoice" :options="invoiceOptions" required></b-form-select>
                                         </b-form-group>
                                     </b-col>
                                     <b-col cols="12">
@@ -49,12 +49,12 @@
                                 <b-row>
                                     <b-col cols="12">
                                         <b-form-group label="Customer - Contract">
-                                            <b-form-select required></b-form-select>
+                                            <b-form-select v-model="customer" :options="customerOptions" required></b-form-select>
                                         </b-form-group>
                                     </b-col>
                                     <b-col cols="12">
                                         <b-form-group label="Customer PO No.">
-                                            <b-form-select required></b-form-select>
+                                            <b-form-select v-model="po" :options="poOptions" required></b-form-select>
                                         </b-form-group>
                                     </b-col>
                                 </b-row>
@@ -71,8 +71,65 @@ export default {
   name: 'ComponentA',
   data () {
     return {
-      selected: 1
+      vendor: null,
+      invoice: null,
+      customer: null,
+      po: null
     }
+  },
+  computed: {
+    vendorOptions () {
+      return this.$store.state.vendor.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    },
+    invoiceOptions () {
+      return this.$store.state.invoice.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    },
+    customerOptions () {
+      return this.$store.state.customer.map(item => {
+        return {
+          value: item.id,
+          text: item.name
+        }
+      })
+    },
+    poOptions () {
+      return this.$store.state.po.map(item => {
+        return {
+          value: item.id,
+          text: item.number
+        }
+      })
+    }
+  },
+  methods: {
+    fetchVendor () {
+      this.$store.dispatch('fetchVendor')
+    },
+    fetchInvoice () {
+      this.$store.dispatch('fetchInvoice')
+    },
+    fetchCustomer () {
+      this.$store.dispatch('fetchCustomer')
+    },
+    fetchPo () {
+      this.$store.dispatch('fetchPo')
+    }
+  },
+  created () {
+    this.fetchVendor()
+    this.fetchInvoice()
+    this.fetchCustomer()
+    this.fetchPo()
   }
 }
 </script>
