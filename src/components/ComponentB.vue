@@ -4,9 +4,9 @@
             <b-card-body>
                 <b-row>
                     <b-col>
-                        <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none">
+                        <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret>
                             <template #button-content>
-                                Cost Detail
+                                <span style="color: #6BCACC;">Cost Detail <b-icon icon="chevron-down" aria-hidden="true" style="margin-left: 10px"></b-icon></span>
                             </template>
                             <b-dropdown-item href="#">Action</b-dropdown-item>
                             <b-dropdown-item href="#">Another action</b-dropdown-item>
@@ -63,7 +63,7 @@
                                     <b-td colspan="7">
                                         <b-form inline>
                                             <label style="margin-right: 5px;">Exchange Rate 1 USD = </label>
-                                            <b-form-input style="width: 100px" v-model="currency"></b-form-input>
+                                            <b-form-input style="width: 100px" v-model="currency" disabled></b-form-input>
                                             <label style="margin-left: 5px;">AED</label>
                                         </b-form>
                                     </b-td>
@@ -140,5 +140,8 @@ export default {
 <style scoped>
     .text-center {
         text-align: center;
+    }
+    .btn-link {
+        color: #6BCACC !important;
     }
 </style>
