@@ -49,7 +49,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchInvoice ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/instruction/invoice')
         .then(({ data }) => {
           console.log(data)
           commit('setInvoice', data.data)
@@ -57,7 +57,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchCustomer ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/instruction/customer')
         .then(({ data }) => {
           console.log(data)
           commit('setCustomer', data.data)
@@ -65,7 +65,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchPo ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/instruction/po')
         .then(({ data }) => {
           console.log(data)
           commit('setPo', data.data)
@@ -73,7 +73,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchUom ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/cost/uom')
         .then(({ data }) => {
           console.log(data)
           commit('setUom', data.data)
@@ -81,7 +81,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchCurrency ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/cost/currency')
         .then(({ data }) => {
           console.log(data)
           commit('setCurrency', data.data)
@@ -89,7 +89,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchChargeTo ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get('http://127.0.0.1:8000/api/cost/chargeto')
         .then(({ data }) => {
           console.log(data)
           commit('setChargeTo', data.data)
