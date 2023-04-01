@@ -6,10 +6,10 @@
                     <b-col cols="2">
                         <b-dropdown variant="outline-secondary" style="width: 100%">
                             <template #button-content>
-                                <b-icon icon="truck" aria-hidden="true"></b-icon>  Logistic Instruction
+                                <b-icon icon="truck" aria-hidden="true" style="margin-right: 10px;color: #6BCACC;"></b-icon>  Logistic Instruction
                             </template>
-                            <b-dropdown-item><b-icon icon="globe2" aria-hidden="true"></b-icon>  Send Instruction</b-dropdown-item>
-                            <b-dropdown-item><b-icon icon="gear-wide-connected" aria-hidden="true"></b-icon>  Admin Instruction</b-dropdown-item>
+                            <b-dropdown-item><b-icon icon="globe2" aria-hidden="true" style="margin-right: 10px;color: #6BCACC;"></b-icon>  Send Instruction</b-dropdown-item>
+                            <b-dropdown-item><b-icon icon="gear-wide-connected" aria-hidden="true" style="margin-right: 10px;color: #6BCACC;"></b-icon>  Admin Instruction</b-dropdown-item>
                         </b-dropdown>
                     </b-col>
                     <b-col cols="10">
