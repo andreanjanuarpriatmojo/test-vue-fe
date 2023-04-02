@@ -92,7 +92,6 @@
                                 </b-tr>
                             </template>
                         </b-table>
-                        <!-- <b-button @click="printAll">Test</b-button> -->
                     </b-col>
                 </b-row>
             </b-card-body>
@@ -205,9 +204,6 @@ export default {
     },
     fetchChargeTo () {
       this.$store.dispatch('fetchChargeTo')
-    },
-    printAll () {
-      console.log(this.items)
     },
     subTotalFix (item) {
       return (item.qty * item.unit_price) - (item.qty * item.unit_price * item.discount / 100)

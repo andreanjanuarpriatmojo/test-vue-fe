@@ -13,7 +13,7 @@
                         </b-dropdown>
                     </b-col>
                     <b-col cols="10">
-                        <b-button pill variant="secondary" size="sm" style="width: 175px;">Draft</b-button>
+                        <AppButton :pill="true" label="Draft" variant="secondary" size="sm" style="width: 175px;"/>
                         <hr>
                         <b-row>
                           <b-col cols="10" style="border-right: 1px dotted gainsboro;">
@@ -67,8 +67,12 @@
     </div>
 </template>
 <script>
+import AppButton from './AppButton.vue'
 export default {
   name: 'ComponentA',
+  components: {
+    AppButton
+  },
   data () {
     return {
       forms: {

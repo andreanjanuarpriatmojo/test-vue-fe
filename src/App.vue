@@ -12,9 +12,9 @@
             </b-row>
             <template #footer>
               <div style="float: right; height: 75px;">
-                <b-button variant="link" size="lg" style="margin-right: 25px;margin-top: 20px;text-decoration: none;color: black">Cancel</b-button>
-                <b-button variant="outline-secondary" size="lg" style="margin-left: 25px;margin-right: 25px;width: 200px;margin-top: 20px;">Save as Draft</b-button>
-                <b-button variant="success" size="lg" style="margin-left: 25px;width: 250px;margin-top: 20px;">Submit</b-button>
+                <AppButton variant="link" size="lg" label="Cancel" style="margin-right: 25px;margin-top: 20px;text-decoration: none;color: black"/>
+                <AppButton variant="outline-secondary" size="lg" label="Save as Draft" style="margin-left: 25px;margin-right: 25px;width: 200px;margin-top: 20px;"/>
+                <AppButton variant="success" size="lg" label="Submit" style="margin-left: 25px;width: 250px;margin-top: 20px;"/>
               </div>
             </template>
           </b-card>
@@ -27,12 +27,14 @@
 <script>
 import ComponentA from './components/ComponentA.vue'
 import ComponentB from './components/ComponentB.vue'
+import AppButton from './components/AppButton.vue'
 
 export default {
   name: 'App',
   components: {
     ComponentA,
-    ComponentB
+    ComponentB,
+    AppButton
   }
 }
 </script>
@@ -42,5 +44,11 @@ export default {
   font-family: sans-serif;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.cancelButton {
+  margin-right: 25px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: black
 }
 </style>
