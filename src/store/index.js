@@ -14,7 +14,14 @@ export default new Vuex.Store({
     currency: [],
     charge_to: [],
     form: {},
-    cost: []
+    cost: [],
+    total: {},
+    vat_amount_aed: null,
+    vat_amount_usd: null,
+    sub_total_aed: null,
+    sub_total_usd: null,
+    total_aed: null,
+    total_usd: null
   },
   getters: {
   },
@@ -54,6 +61,21 @@ export default new Vuex.Store({
     },
     unsetCost (state, payload) {
       state.cost.splice(payload.index, 1)
+    },
+    setTotal (state, payload) {
+      if (payload.type === 'vat-aed') {
+        state.vat_amount_aed = payload.value
+      } else if (payload.type === 'vat-usd') {
+        state.vat_amount_usd = payload.value
+      } else if (payload.type === 'subtotal-aed') {
+        state.sub_total_aed = payload.value
+      } else if (payload.type === 'subtotal-usd') {
+        state.sub_total_usd = payload.value
+      } else if (payload.type === 'total-aed') {
+        state.total_aed = payload.value
+      } else if (payload.type === 'total-usd') {
+        state.total_usd = payload.value
+      }
     }
   },
   actions: {
@@ -113,8 +135,27 @@ export default new Vuex.Store({
         })
         .catch(console.log)
     },
-    fetchVendorForm (commit, payload) {
-      commit('setVendorForm', payload)
+    submit (context, payload) {
+      console.log(payload)
+      // const { form, cost, total } = payload
+      // axios.post('yourlink', {
+      //   form, cost, total
+      // })
+      //   .then(({ data }) => {
+      //     console.log(data)
+      //   })
+      //   .catch(console.log)
+    },
+    draft (context, payload) {
+      console.log(payload)
+      // const { form, cost, total } = payload
+      // axios.post('yourlink', {
+      //   form, cost, total
+      // })
+      //   .then(({ data }) => {
+      //     console.log(data)
+      //   })
+      //   .catch(console.log)
     }
   },
   modules: {

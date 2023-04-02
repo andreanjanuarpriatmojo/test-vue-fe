@@ -159,40 +159,52 @@ export default {
       })
     },
     allSubTotalFixUsd () {
-      return this.items
+      const total = this.items
         .map(item => this.subTotalFixUsd(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'subtotal-usd', value: total })
+      return total
     },
     allSubTotalFixAed () {
-      return this.items
+      const total = this.items
         .map(item => this.subTotalFixAed(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'subtotal-aed', value: total })
+      return total
     },
     allVatAmountFixUsd () {
-      return this.items
+      const total = this.items
         .map(item => this.vatAmountFixUsd(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'vat-usd', value: total })
+      return total
     },
     allVatAmountFixAed () {
-      return this.items
+      const total = this.items
         .map(item => this.vatAmountFixAed(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'vat-aed', value: total })
+      return total
     },
     allTotalFixUsd () {
-      return this.items
+      const total = this.items
         .map(item => this.totalFixUsd(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'total-usd', value: total })
+      return total
     },
     allTotalFixAed () {
-      return this.items
+      const total = this.items
         .map(item => this.totalFixAed(item))
         .reduce((a, b) => a + b, 0)
         .toFixed(2)
+      this.$store.commit('setTotal', { type: 'total-aed', value: total })
+      return total
     }
   },
   methods: {
@@ -213,31 +225,40 @@ export default {
       this.$store.dispatch('fetchChargeTo')
     },
     subTotalFix (item) {
-      return (item.qty * item.unit_price) - (item.qty * item.unit_price * item.discount / 100)
+      const total = (item.qty * item.unit_price) - (item.qty * item.unit_price * item.discount / 100)
+      return total
     },
     subTotalFixUsd (item) {
-      return item.currency ? item.currency === 1 ? this.subTotalFix(item) : this.subTotalFix(item) / this.currency : 0
+      const total = item.currency ? item.currency === 1 ? this.subTotalFix(item) : this.subTotalFix(item) / this.currency : 0
+      return total
     },
     subTotalFixAed (item) {
-      return item.currency ? item.currency === 2 ? this.subTotalFix(item) : this.subTotalFix(item) * this.currency : 0
+      const total = item.currency ? item.currency === 2 ? this.subTotalFix(item) : this.subTotalFix(item) * this.currency : 0
+      return total
     },
     vatAmountFix (item) {
-      return (item.qty * item.unit_price) * (item.vat) / 100
+      const total = (item.qty * item.unit_price) * (item.vat) / 100
+      return total
     },
     vatAmountFixUsd (item) {
-      return item.currency ? item.currency === 1 ? this.vatAmountFix(item) : this.vatAmountFix(item) / this.currency : 0
+      const total = item.currency ? item.currency === 1 ? this.vatAmountFix(item) : this.vatAmountFix(item) / this.currency : 0
+      return total
     },
     vatAmountFixAed (item) {
-      return item.currency ? item.currency === 2 ? this.vatAmountFix(item) : this.vatAmountFix(item) * this.currency : 0
+      const total = item.currency ? item.currency === 2 ? this.vatAmountFix(item) : this.vatAmountFix(item) * this.currency : 0
+      return total
     },
     totalFix (item) {
-      return (this.subTotalFix(item) + this.vatAmountFix(item))
+      const total = (this.subTotalFix(item) + this.vatAmountFix(item))
+      return total
     },
     totalFixUsd (item) {
-      return item.currency ? item.currency === 1 ? this.totalFix(item) : this.totalFix(item) / this.currency : 0
+      const total = item.currency ? item.currency === 1 ? this.totalFix(item) : this.totalFix(item) / this.currency : 0
+      return total
     },
     totalFixAed (item) {
-      return item.currency ? item.currency === 2 ? this.totalFix(item) : this.totalFix(item) * this.currency : 0
+      const total = item.currency ? item.currency === 2 ? this.totalFix(item) : this.totalFix(item) * this.currency : 0
+      return total
     }
   },
   created () {

@@ -44,14 +44,46 @@ export default {
       console.log('reset')
     },
     draft () {
-      console.log('draft')
-      console.log(this.$store.state.form)
-      console.log(this.$store.state.cost)
+      const cost = this.$store.state.cost
+      for (let x = 0; x < cost.length; x++) {
+        cost[x].vat_amount = (cost[x].qty * cost[x].unit_price) * (cost[x].vat) / 100
+        cost[x].sub_total = (cost[x].qty * cost[x].unit_price) - (cost[x].qty * cost[x].unit_price * cost[x].discount / 100)
+        cost[x].total = (cost[x].vat_amount + cost[x].sub_total)
+      }
+      const payload = {
+        form: this.$store.state.form,
+        cost: cost,
+        total: {
+          vat_aed: this.$store.state.vat_amount_aed,
+          vat_usd: this.$store.state.vat_amount_usd,
+          sub_aed: this.$store.state.sub_total_aed,
+          sub_usd: this.$store.state.sub_total_usd,
+          total_aed: this.$store.state.total_aed,
+          total_usd: this.$store.state.total_usd
+        }
+      }
+      this.$store.dispatch('draft', payload)
     },
     submit () {
-      console.log('submit')
-      console.log(this.$store.state.form)
-      console.log(this.$store.state.cost)
+      const cost = this.$store.state.cost
+      for (let x = 0; x < cost.length; x++) {
+        cost[x].vat_amount = (cost[x].qty * cost[x].unit_price) * (cost[x].vat) / 100
+        cost[x].sub_total = (cost[x].qty * cost[x].unit_price) - (cost[x].qty * cost[x].unit_price * cost[x].discount / 100)
+        cost[x].total = (cost[x].vat_amount + cost[x].sub_total)
+      }
+      const payload = {
+        form: this.$store.state.form,
+        cost: cost,
+        total: {
+          vat_aed: this.$store.state.vat_amount_aed,
+          vat_usd: this.$store.state.vat_amount_usd,
+          sub_aed: this.$store.state.sub_total_aed,
+          sub_usd: this.$store.state.sub_total_usd,
+          total_aed: this.$store.state.total_aed,
+          total_usd: this.$store.state.total_usd
+        }
+      }
+      this.$store.dispatch('submit', payload)
     }
   }
 }
