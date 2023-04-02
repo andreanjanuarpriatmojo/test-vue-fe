@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.use(Vuex)
+Vue.use(VueSweetalert2)
 
 export default new Vuex.Store({
   state: {
@@ -137,6 +140,11 @@ export default new Vuex.Store({
     },
     submit (context, payload) {
       console.log(payload)
+      this.$swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Input data succes!'
+      })
       // const { form, cost, total } = payload
       // axios.post('yourlink', {
       //   form, cost, total
@@ -148,6 +156,11 @@ export default new Vuex.Store({
     },
     draft (context, payload) {
       console.log(payload)
+      this.$swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Save draft succes!'
+      })
       // const { form, cost, total } = payload
       // axios.post('yourlink', {
       //   form, cost, total
