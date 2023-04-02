@@ -1,5 +1,5 @@
 <template>
-    <b-button :variant="variant" :size="size" :pill="pill">{{ label }}</b-button>
+    <b-button @click="$emit('hit-click')" :variant="variant" :size="size" :pill="pill">{{ label }}</b-button>
 </template>
 
 <script>
