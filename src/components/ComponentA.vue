@@ -19,9 +19,7 @@
                           <b-col cols="10" style="border-right: 1px dotted gainsboro;">
                               <b-row>
                                   <b-col cols="3">
-                                      <b-form-group label="Assigned Vendor">
-                                          <b-form-select v-model="forms.vendor" :options="vendorOptions" required></b-form-select>
-                                      </b-form-group>
+                                    <AppSelect label="Assigned Vendor" :required="true" :options="vendorOptions" v-model="forms.vendor" />
                                   </b-col>
                                   <b-col cols="3">
                                     <AppInput label="Attention Of" :required="true" v-model="forms.attention_of" />
@@ -42,14 +40,10 @@
                           <b-col cols="2">
                               <b-row>
                                   <b-col cols="12">
-                                      <b-form-group label="Customer - Contract">
-                                          <b-form-select v-model="forms.customer" :options="customerOptions" required></b-form-select>
-                                      </b-form-group>
+                                    <AppSelect label="Customer - Contract" :required="true" :options="customerOptions" v-model="forms.customer" />
                                   </b-col>
                                   <b-col cols="12">
-                                      <b-form-group label="Customer PO No.">
-                                          <b-form-select v-model="forms.po" :options="poOptions" required></b-form-select>
-                                      </b-form-group>
+                                    <AppSelect label="Customer PO No." :required="true" :options="poOptions" v-model="forms.po" />
                                   </b-col>
                               </b-row>
                           </b-col>
@@ -63,11 +57,13 @@
 <script>
 import AppButton from './AppButton.vue'
 import AppInput from './AppInput.vue'
+import AppSelect from './AppSelect.vue'
 export default {
   name: 'ComponentA',
   components: {
     AppButton,
-    AppInput
+    AppInput,
+    AppSelect
   },
   data () {
     return {

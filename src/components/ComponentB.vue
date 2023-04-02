@@ -24,7 +24,7 @@
                               <AppInput type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
                             </template>
                             <template #cell(uom)="row">
-                                <b-form-select v-model="row.item.uom" :options="uomOptions" required></b-form-select>
+                              <AppSelect :required="true" :options="uomOptions" v-model="row.item.uom" />
                             </template>
                             <template #cell(unit_price)="row">
                               <AppInput type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
@@ -39,7 +39,7 @@
                                 <b-icon icon="arrow-right" aria-hidden="true"></b-icon>
                             </template>
                             <template #cell(currency)="row">
-                                <b-form-select v-model="row.item.currency" :options="currencyOptions" required></b-form-select>
+                              <AppSelect :required="true" :options="currencyOptions" v-model="row.item.currency" />
                             </template>
                             <template #cell(vat_amount)="row">
                                 <p class="text-center">{{ vatAmountFix(row.item).toFixed(2) }}</p>
@@ -51,7 +51,7 @@
                                 <p class="text-center">{{ totalFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
-                                <b-form-select v-model="row.item.charge_to" :options="chargeToOptions" required></b-form-select>
+                              <AppSelect :required="true" :options="chargeToOptions" v-model="row.item.charge_to" />
                             </template>
                             <template #cell(index)="row">
                                 <b-button @click="removeCostDetail(row.index)" title="Remove">
@@ -101,10 +101,12 @@
 
 <script>
 import AppInput from './AppInput.vue'
+import AppSelect from './AppSelect.vue'
 export default {
   name: 'ComponentB',
   components: {
-    AppInput
+    AppInput,
+    AppSelect
   },
   data () {
     return {
