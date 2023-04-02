@@ -18,22 +18,22 @@
                                 </span>
                             </template>
                             <template #cell(desc)="row">
-                                <b-form-input v-model="row.item.desc" type="text" placeholder="Description" required></b-form-input>
+                              <AppInput placeholder="Description" :required="true" v-model="row.item.desc" />
                             </template>
                             <template #cell(qty)="row">
-                                <b-form-input v-model="row.item.qty" type="number" placeholder="Qty" required></b-form-input>
+                              <AppInput type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
                             </template>
                             <template #cell(uom)="row">
                                 <b-form-select v-model="row.item.uom" :options="uomOptions" required></b-form-select>
                             </template>
                             <template #cell(unit_price)="row">
-                                <b-form-input v-model="row.item.unit_price" type="number" placeholder="Unit Price" required></b-form-input>
+                              <AppInput type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
                             </template>
                             <template #cell(discount)="row">
-                                <b-form-input v-model="row.item.discount" type="number" placeholder="Discount (%)" required></b-form-input>
+                              <AppInput type="number" placeholder="Discount (%)" :required="true" v-model="row.item.discount" />
                             </template>
                             <template #cell(vat)="row">
-                                <b-form-input v-model="row.item.vat" type="number" placeholder="VAT (%)" required></b-form-input>
+                              <AppInput type="number" placeholder="VAT (%)" :required="true" v-model="row.item.vat" />
                             </template>
                             <template #cell(icon)>
                                 <b-icon icon="arrow-right" aria-hidden="true"></b-icon>
@@ -100,8 +100,12 @@
 </template>
 
 <script>
+import AppInput from './AppInput.vue'
 export default {
   name: 'ComponentB',
+  components: {
+    AppInput
+  },
   data () {
     return {
       fields: [
