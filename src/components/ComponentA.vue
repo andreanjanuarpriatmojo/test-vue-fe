@@ -16,49 +16,49 @@
                         <b-button pill variant="secondary" size="sm" style="width: 175px;">Draft</b-button>
                         <hr>
                         <b-row>
-                            <b-col cols="10" style="border-right: 1px dotted gainsboro;">
-                                <b-row>
-                                    <b-col cols="3">
-                                        <b-form-group label="Assigned Vendor">
-                                            <b-form-select v-model="vendor" :options="vendorOptions" required></b-form-select>
-                                        </b-form-group>
-                                    </b-col>
-                                    <b-col cols="3">
-                                        <b-form-group label="Attention Of">
-                                            <b-form-input required></b-form-input>
-                                        </b-form-group>
-                                    </b-col>
-                                    <b-col cols="3">
-                                        <b-form-group label="Quotation No.">
-                                            <b-form-input required></b-form-input>
-                                        </b-form-group>
-                                    </b-col>
-                                    <b-col cols="3">
-                                        <b-form-group label="Invoice To">
-                                            <b-form-select v-model="invoice" :options="invoiceOptions" required></b-form-select>
-                                        </b-form-group>
-                                    </b-col>
-                                    <b-col cols="12">
-                                        <b-form-group label="Vendor Address">
-                                            <b-form-input required></b-form-input>
-                                        </b-form-group>
-                                    </b-col>
-                                </b-row>
-                            </b-col>
-                            <b-col cols="2">
-                                <b-row>
-                                    <b-col cols="12">
-                                        <b-form-group label="Customer - Contract">
-                                            <b-form-select v-model="customer" :options="customerOptions" required></b-form-select>
-                                        </b-form-group>
-                                    </b-col>
-                                    <b-col cols="12">
-                                        <b-form-group label="Customer PO No.">
-                                            <b-form-select v-model="po" :options="poOptions" required></b-form-select>
-                                        </b-form-group>
-                                    </b-col>
-                                </b-row>
-                            </b-col>
+                          <b-col cols="10" style="border-right: 1px dotted gainsboro;">
+                              <b-row>
+                                  <b-col cols="3">
+                                      <b-form-group label="Assigned Vendor">
+                                          <b-form-select v-model="forms.vendor" :options="vendorOptions" required></b-form-select>
+                                      </b-form-group>
+                                  </b-col>
+                                  <b-col cols="3">
+                                      <b-form-group label="Attention Of">
+                                          <b-form-input v-model="forms.attention_of" required></b-form-input>
+                                      </b-form-group>
+                                  </b-col>
+                                  <b-col cols="3">
+                                      <b-form-group label="Quotation No.">
+                                          <b-form-input v-model="forms.quotation_no" required></b-form-input>
+                                      </b-form-group>
+                                  </b-col>
+                                  <b-col cols="3">
+                                      <b-form-group label="Invoice To">
+                                          <b-form-select v-model="forms.invoice" :options="invoiceOptions" required></b-form-select>
+                                      </b-form-group>
+                                  </b-col>
+                                  <b-col cols="12">
+                                      <b-form-group label="Vendor Address">
+                                          <b-form-input v-model="forms.vendor_address" required></b-form-input>
+                                      </b-form-group>
+                                  </b-col>
+                              </b-row>
+                          </b-col>
+                          <b-col cols="2">
+                              <b-row>
+                                  <b-col cols="12">
+                                      <b-form-group label="Customer - Contract">
+                                          <b-form-select v-model="customer" :options="customerOptions" required></b-form-select>
+                                      </b-form-group>
+                                  </b-col>
+                                  <b-col cols="12">
+                                      <b-form-group label="Customer PO No.">
+                                          <b-form-select v-model="po" :options="poOptions" required></b-form-select>
+                                      </b-form-group>
+                                  </b-col>
+                              </b-row>
+                          </b-col>
                         </b-row>
                     </b-col>
                 </b-row>
@@ -71,10 +71,15 @@ export default {
   name: 'ComponentA',
   data () {
     return {
-      vendor: null,
-      invoice: null,
-      customer: null,
-      po: null
+      forms: {
+        vendor: null,
+        attention_of: null,
+        quotation_no: null,
+        invoice: null,
+        vendor_address: null,
+        customer: null,
+        po: null
+      }
     }
   },
   computed: {
