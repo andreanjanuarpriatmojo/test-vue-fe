@@ -24,14 +24,10 @@
                                       </b-form-group>
                                   </b-col>
                                   <b-col cols="3">
-                                      <b-form-group label="Attention Of">
-                                          <b-form-input v-model="forms.attention_of" required></b-form-input>
-                                      </b-form-group>
+                                      <AppInput label="Attention Of" :required="true" v-model="forms.attention_of" />
                                   </b-col>
                                   <b-col cols="3">
-                                      <b-form-group label="Quotation No.">
-                                          <b-form-input v-model="forms.quotation_no" required></b-form-input>
-                                      </b-form-group>
+                                      <AppInput label="Quotation No." :required="true" v-model="forms.quotation_no" />
                                   </b-col>
                                   <b-col cols="3">
                                       <b-form-group label="Invoice To">
@@ -39,9 +35,7 @@
                                       </b-form-group>
                                   </b-col>
                                   <b-col cols="12">
-                                      <b-form-group label="Vendor Address">
-                                          <b-form-input v-model="forms.vendor_address" required></b-form-input>
-                                      </b-form-group>
+                                      <AppInput label="Vendor Address" :required="true" v-model="forms.vendor_address" />
                                   </b-col>
                               </b-row>
                           </b-col>
@@ -68,10 +62,12 @@
 </template>
 <script>
 import AppButton from './AppButton.vue'
+import AppInput from './AppInput.vue'
 export default {
   name: 'ComponentA',
   components: {
-    AppButton
+    AppButton,
+    AppInput
   },
   data () {
     return {
