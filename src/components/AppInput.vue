@@ -1,6 +1,6 @@
 <template>
     <b-form-group :label="label">
-        <b-form-input :type="type" :placeholder="placeholder" :required="required" :value="value" @input="$emit('input', $event)"></b-form-input>
+        <b-form-input :index="index" :name="name" :type="type" :placeholder="placeholder" :required="required" :value="value" @input="getValue('input', $event)"></b-form-input>
     </b-form-group>
 </template>
 
@@ -8,7 +8,10 @@
 export default {
   name: 'AppInput',
   data () {
-    return { }
+    return {
+      prop: this.name,
+      count: this.index
+    }
   },
   props: {
     label: {
@@ -27,7 +30,22 @@ export default {
       type: Boolean,
       default: false
     },
-    value: []
+    value: [],
+    name: String,
+    index: {
+      type: Number,
+      default: null
+    }
+  },
+  methods: {
+    getValue (type, e) {
+      this.$emit(type, e)
+      if (this.count == null) {
+        this.$store.commit('setForm', { key: this.prop, value: e })
+      } else {
+        this.$store.commit('setCost', { index: this.count, key: this.prop, value: e })
+      }
+    }
   }
 }
 </script>

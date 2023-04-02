@@ -18,28 +18,28 @@
                                 </span>
                             </template>
                             <template #cell(desc)="row">
-                              <AppInput placeholder="Description" :required="true" v-model="row.item.desc" />
+                              <AppInput name="desc" :index="row.index" placeholder="Description" :required="true" v-model="row.item.desc" />
                             </template>
                             <template #cell(qty)="row">
-                              <AppInput type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
+                              <AppInput name="qty" :index="row.index" type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
                             </template>
                             <template #cell(uom)="row">
-                              <AppSelect :required="true" :options="uomOptions" v-model="row.item.uom" />
+                              <AppSelect name="uom" :index="row.index" :required="true" :options="uomOptions" v-model="row.item.uom" />
                             </template>
                             <template #cell(unit_price)="row">
-                              <AppInput type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
+                              <AppInput name="unit_price" :index="row.index" type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
                             </template>
                             <template #cell(discount)="row">
-                              <AppInput type="number" placeholder="Discount (%)" :required="true" v-model="row.item.discount" />
+                              <AppInput name="discount" :index="row.index" type="number" placeholder="Discount (%)" :required="true" v-model="row.item.discount" />
                             </template>
                             <template #cell(vat)="row">
-                              <AppInput type="number" placeholder="VAT (%)" :required="true" v-model="row.item.vat" />
+                              <AppInput name="vat" :index="row.index" type="number" placeholder="VAT (%)" :required="true" v-model="row.item.vat" />
                             </template>
                             <template #cell(icon)>
                                 <b-icon icon="arrow-right" aria-hidden="true"></b-icon>
                             </template>
                             <template #cell(currency)="row">
-                              <AppSelect :required="true" :options="currencyOptions" v-model="row.item.currency" />
+                              <AppSelect name="currency" :index="row.index" :required="true" :options="currencyOptions" v-model="row.item.currency" />
                             </template>
                             <template #cell(vat_amount)="row">
                                 <p class="text-center">{{ vatAmountFix(row.item).toFixed(2) }}</p>
@@ -51,7 +51,7 @@
                                 <p class="text-center">{{ totalFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
-                              <AppSelect :required="true" :options="chargeToOptions" v-model="row.item.charge_to" />
+                              <AppSelect name="charge_to" :index="row.index" :required="true" :options="chargeToOptions" v-model="row.item.charge_to" />
                             </template>
                             <template #cell(index)="row">
                                 <b-button @click="removeCostDetail(row.index)" title="Remove">
@@ -201,6 +201,7 @@ export default {
     },
     removeCostDetail: function (index) {
       this.items.splice(index, 1)
+      this.$store.commit('unsetCost', { index: index })
     },
     fetchUom () {
       this.$store.dispatch('fetchUom')

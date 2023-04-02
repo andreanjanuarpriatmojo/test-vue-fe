@@ -12,7 +12,9 @@ export default new Vuex.Store({
     po: [],
     uom: [],
     currency: [],
-    charge_to: []
+    charge_to: [],
+    form: {},
+    cost: []
   },
   getters: {
   },
@@ -37,6 +39,21 @@ export default new Vuex.Store({
     },
     setChargeTo (state, payload) {
       state.charge_to = payload
+    },
+    setForm (state, payload) {
+      state.form = {
+        ...state.form,
+        [payload.key]: payload.value
+      }
+    },
+    setCost (state, payload) {
+      state.cost[payload.index] = {
+        ...state.cost[payload.index],
+        [payload.key]: payload.value
+      }
+    },
+    unsetCost (state, payload) {
+      state.cost.splice(payload.index, 1)
     }
   },
   actions: {
@@ -95,6 +112,9 @@ export default new Vuex.Store({
           commit('setChargeTo', data.data)
         })
         .catch(console.log)
+    },
+    fetchVendorForm (commit, payload) {
+      commit('setVendorForm', payload)
     }
   },
   modules: {

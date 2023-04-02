@@ -36,15 +36,22 @@ export default {
     ComponentB,
     AppButton
   },
+  data () {
+    return { }
+  },
   methods: {
     reset () {
       console.log('reset')
     },
     draft () {
       console.log('draft')
+      console.log(this.$store.state.form)
+      console.log(this.$store.state.cost)
     },
     submit () {
       console.log('submit')
+      console.log(this.$store.state.form)
+      console.log(this.$store.state.cost)
     }
   }
 }

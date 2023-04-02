@@ -19,31 +19,29 @@
                           <b-col cols="10" style="border-right: 1px dotted gainsboro;">
                               <b-row>
                                   <b-col cols="3">
-                                    <AppSelect label="Assigned Vendor" :required="true" :options="vendorOptions" v-model="forms.vendor" />
+                                    <AppSelect label="Assigned Vendor" name="vendor" :required="true" :options="vendorOptions" v-model="forms.vendor" />
                                   </b-col>
                                   <b-col cols="3">
-                                    <AppInput label="Attention Of" :required="true" v-model="forms.attention_of" />
+                                    <AppInput label="Attention Of" name="attention_of" :required="true" v-model="forms.attention_of" />
                                   </b-col>
                                   <b-col cols="3">
-                                    <AppInput label="Quotation No." :required="true" v-model="forms.quotation_no" />
+                                    <AppInput label="Quotation No." name="quotation_no" :required="true" v-model="forms.quotation_no" />
                                   </b-col>
                                   <b-col cols="3">
-                                      <b-form-group label="Invoice To">
-                                          <b-form-select v-model="forms.invoice" :options="invoiceOptions" required></b-form-select>
-                                      </b-form-group>
+                                    <AppSelect label="Invoice To" name="invoice" :required="true" :options="invoiceOptions" v-model="forms.invoice" />
                                   </b-col>
                                   <b-col cols="12">
-                                    <AppInput label="Vendor Address" :required="true" v-model="forms.vendor_address" />
+                                    <AppInput label="Vendor Address" name="vendor_address" :required="true" v-model="forms.vendor_address" />
                                   </b-col>
                               </b-row>
                           </b-col>
                           <b-col cols="2">
                               <b-row>
                                   <b-col cols="12">
-                                    <AppSelect label="Customer - Contract" :required="true" :options="customerOptions" v-model="forms.customer" />
+                                    <AppSelect label="Customer - Contract" name="customer" :required="true" :options="customerOptions" v-model="forms.customer" />
                                   </b-col>
                                   <b-col cols="12">
-                                    <AppSelect label="Customer PO No." :required="true" :options="poOptions" v-model="forms.po" />
+                                    <AppSelect label="Customer PO No." name="po" :required="true" :options="poOptions" v-model="forms.po" />
                                   </b-col>
                               </b-row>
                           </b-col>
