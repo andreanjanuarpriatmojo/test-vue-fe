@@ -40,6 +40,18 @@ export default {
     return { }
   },
   methods: {
+    validate () {
+      // const form = this.$store.state.form
+      // const cost = this.$store.state.cost
+      // if (form.vendor === null || form.attention_of === null || form.attention_of === null) {
+
+      // }
+      // this.$swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Please fill all form!'
+      // })
+    },
     reset () {
       console.log('reset')
     },
