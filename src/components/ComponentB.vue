@@ -85,7 +85,7 @@
                                     </b-td>
                                     <b-td></b-td>
                                     <b-td>
-                                        <b-button @click="addCostDetail" title="Add" variant="success">
+                                        <b-button @click="addCostDetail" title="Add" variant="success" style="background-color: #56BDBE;border-color: #56BDBE;">
                                             <b-icon icon="plus-lg" aria-hidden="true"></b-icon>
                                         </b-button>
                                     </b-td>
