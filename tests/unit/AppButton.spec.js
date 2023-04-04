@@ -42,3 +42,15 @@ describe('components/AppButton.vue', () => {
     expect(wrapper.attributes().size).toContain(type)
   })
 })
+
+describe('components/AppButton.vue', () => {
+  it('render correct pill when passed', () => {
+    const pill = true
+    const wrapper = shallowMount(AppButton, {
+      propsData: {
+        pill: pill
+      }
+    })
+    expect(wrapper.attributes().pill).toBe('true')
+  })
+})
