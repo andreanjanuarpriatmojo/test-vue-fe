@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import test from './modules/test'
 
 Vue.use(Vuex)
 Vue.use(VueSweetalert2)
@@ -27,6 +28,10 @@ export default new Vuex.Store({
     total_usd: null
   },
   getters: {
+    // return to component this.$store.getters.doneTodosCount
+    convertUsd (state) {
+      return state.total_aed / 3.6725
+    }
   },
   mutations: {
     setVendor (state, payload) {
@@ -172,5 +177,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    test
   }
 })
