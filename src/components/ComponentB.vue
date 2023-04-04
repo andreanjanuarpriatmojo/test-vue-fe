@@ -18,28 +18,28 @@
                                 </span>
                             </template>
                             <template #cell(desc)="row">
-                              <AppInput name="desc" :index="row.index" placeholder="Description" :required="true" v-model="row.item.desc" />
+                              <input-desc name="desc" :index="row.index" placeholder="Description" :required="true" v-model="row.item.desc" />
                             </template>
                             <template #cell(qty)="row">
-                              <AppInput name="qty" :index="row.index" type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
+                              <input-qty name="qty" :index="row.index" type="number" placeholder="Qty" :required="true" v-model="row.item.qty" />
                             </template>
                             <template #cell(uom)="row">
-                              <AppSelect name="uom" :index="row.index" :required="true" :options="uomOptions" v-model="row.item.uom" />
+                              <select-uom name="uom" :index="row.index" :required="true" :options="uomOptions" v-model="row.item.uom" />
                             </template>
                             <template #cell(unit_price)="row">
-                              <AppInput name="unit_price" :index="row.index" type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
+                              <input-unit-price name="unit_price" :index="row.index" type="number" placeholder="Unit Price" :required="true" v-model="row.item.unit_price" />
                             </template>
                             <template #cell(discount)="row">
-                              <AppInput name="discount" :index="row.index" type="number" placeholder="Discount (%)" :required="true" v-model="row.item.discount" />
+                              <input-discount name="discount" :index="row.index" type="number" placeholder="Discount (%)" :required="true" v-model="row.item.discount" />
                             </template>
                             <template #cell(vat)="row">
-                              <AppInput name="vat" :index="row.index" type="number" placeholder="VAT (%)" :required="true" v-model="row.item.vat" />
+                              <input-vat name="vat" :index="row.index" type="number" placeholder="VAT (%)" :required="true" v-model="row.item.vat" />
                             </template>
                             <template #cell(icon)>
                                 <b-icon icon="arrow-right" aria-hidden="true"></b-icon>
                             </template>
                             <template #cell(currency)="row">
-                              <AppSelect name="currency" :index="row.index" :required="true" :options="currencyOptions" v-model="row.item.currency" />
+                              <select-currency name="currency" :index="row.index" :required="true" :options="currencyOptions" v-model="row.item.currency" />
                             </template>
                             <template #cell(vat_amount)="row">
                                 <p class="text-center">{{ vatAmountFix(row.item).toFixed(2) }}</p>
@@ -51,7 +51,7 @@
                                 <p class="text-center">{{ totalFix(row.item).toFixed(2) }}</p>
                             </template>
                             <template #cell(charge_to)="row">
-                              <AppSelect name="charge_to" :index="row.index" :required="true" :options="chargeToOptions" v-model="row.item.charge_to" />
+                              <select-charge-to name="charge_to" :index="row.index" :required="true" :options="chargeToOptions" v-model="row.item.charge_to" />
                             </template>
                             <template #cell(index)="row">
                                 <b-button @click="removeCostDetail(row.index)" title="Remove">
@@ -105,8 +105,14 @@ import AppSelect from './AppSelect.vue'
 export default {
   name: 'ComponentB',
   components: {
-    AppInput,
-    AppSelect
+    'input-desc': AppInput,
+    'input-qty': AppInput,
+    'input-unit-price': AppInput,
+    'input-discount': AppInput,
+    'input-vat': AppInput,
+    'select-uom': AppSelect,
+    'select-currency': AppSelect,
+    'select-charge-to': AppSelect
   },
   data () {
     return {

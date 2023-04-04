@@ -12,9 +12,9 @@
             </b-row>
             <template #footer>
               <div style="float: right; height: 75px;">
-                <AppButton @hit-click="reset" variant="link" size="lg" label="Cancel" style="margin-right: 25px;margin-top: 20px;text-decoration: none;color: black"/>
-                <AppButton @hit-click="draft" variant="outline-secondary" size="lg" label="Save as Draft" style="margin-left: 25px;margin-right: 25px;width: 200px;margin-top: 20px;"/>
-                <AppButton @hit-click="submit" variant="success" size="lg" label="Submit" style="margin-left: 25px;width: 250px;margin-top: 20px;background-color: #56BDBE;border-color: #56BDBE;"/>
+                <btn-cancel @hit-click="reset" variant="link" size="lg" label="Cancel" style="margin-right: 25px;margin-top: 20px;text-decoration: none;color: black"/>
+                <btn-draft @hit-click="draft" variant="outline-secondary" size="lg" label="Save as Draft" style="margin-left: 25px;margin-right: 25px;width: 200px;margin-top: 20px;"/>
+                <btn-submit @hit-click="submit" variant="success" size="lg" label="Submit" style="margin-left: 25px;width: 250px;margin-top: 20px;background-color: #56BDBE;border-color: #56BDBE;"/>
               </div>
             </template>
           </b-card>
@@ -34,7 +34,9 @@ export default {
   components: {
     ComponentA,
     ComponentB,
-    AppButton
+    'btn-cancel': AppButton,
+    'btn-draft': AppButton,
+    'btn-submit': AppButton
   },
   data () {
     return { }
