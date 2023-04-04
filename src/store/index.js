@@ -83,7 +83,7 @@ export default new Vuex.Store({
   },
   actions: {
     fetchVendor ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/vendor')
+      axios.get(process.env.VUE_APP_API_URL + 'instruction/vendor')
         .then(({ data }) => {
           // console.log(data)
           commit('setVendor', data.data)
@@ -91,7 +91,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchInvoice ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/invoice')
+      axios.get(process.env.VUE_APP_API_URL + 'instruction/invoice')
         .then(({ data }) => {
           // console.log(data)
           commit('setInvoice', data.data)
@@ -99,7 +99,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchCustomer ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/customer')
+      axios.get(process.env.VUE_APP_API_URL + 'instruction/customer')
         .then(({ data }) => {
           // console.log(data)
           commit('setCustomer', data.data)
@@ -107,7 +107,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchPo ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/instruction/po')
+      axios.get(process.env.VUE_APP_API_URL + 'instruction/po')
         .then(({ data }) => {
           // console.log(data)
           commit('setPo', data.data)
@@ -115,7 +115,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchUom ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/cost/uom')
+      axios.get(process.env.VUE_APP_API_URL + 'cost/uom')
         .then(({ data }) => {
           // console.log(data)
           commit('setUom', data.data)
@@ -123,7 +123,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchCurrency ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/cost/currency')
+      axios.get(process.env.VUE_APP_API_URL + 'cost/currency')
         .then(({ data }) => {
           // console.log(data)
           commit('setCurrency', data.data)
@@ -131,7 +131,7 @@ export default new Vuex.Store({
         .catch(console.log)
     },
     fetchChargeTo ({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/cost/chargeto')
+      axios.get(process.env.VUE_APP_API_URL + 'cost/chargeto')
         .then(({ data }) => {
           // console.log(data)
           commit('setChargeTo', data.data)
